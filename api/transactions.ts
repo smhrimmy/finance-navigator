@@ -10,7 +10,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
     if (!userId) return res.status(400).json({ success: false, message: 'UserId required' });
     try {
-      const transactions = await Transaction.find({ userId }).sort({ date: -1 });
+      const transactions = await Transaction.find({ userId } as any).sort({ date: -1 });
       res.status(200).json({ success: true, data: transactions });
     } catch (error: any) {
       res.status(400).json({ success: false, error: error.message });

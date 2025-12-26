@@ -13,7 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'GET') {
     try {
-      const accounts = await Account.find({ userId });
+      const accounts = await Account.find({ userId } as any);
       res.status(200).json({ success: true, data: accounts });
     } catch (error: any) {
       res.status(400).json({ success: false, error: error.message });

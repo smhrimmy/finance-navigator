@@ -10,7 +10,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
     if (!userId) return res.status(400).json({ success: false, message: 'UserId required' });
     try {
-      const goals = await Goal.find({ userId });
+      const goals = await Goal.find({ userId } as any);
       res.status(200).json({ success: true, data: goals });
     } catch (error: any) {
       res.status(400).json({ success: false, error: error.message });
@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } else if (req.method === 'PUT') {
     try {
         const { id, ...data } = req.body;
-        const goal = await Goal.findByIdAndUpdate(id, data, { new: true });
+        const goal = await Goal.findByIdAndUpdate(id, data, { new: true } as any);
         res.status(200).json({ success: true, data: goal });
     } catch (error: any) {
         res.status(400).json({ success: false, error: error.message });

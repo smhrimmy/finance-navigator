@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { email, password } = req.body;
     
     try {
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ email } as any);
       
       if (!user) {
         // Create new user if not exists (Auto-register for demo)
@@ -36,7 +36,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { email, id } = req.query;
     try {
       const query = id ? { _id: id } : { email };
-      const user = await User.findOne(query);
+      const user = await User.findOne(query as any);
       if (!user) {
         return res.status(404).json({ success: false, message: 'User not found' });
       }
@@ -47,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } else if (req.method === 'PUT') {
      const { id, ...updateData } = req.body;
      try {
-       const user = await User.findByIdAndUpdate(id, updateData, { new: true });
+       const user = await User.findByIdAndUpdate(id, updateData, { new: true } as any);
        res.status(200).json({ success: true, data: user });
      } catch (error: any) {
        res.status(400).json({ success: false, error: error.message });

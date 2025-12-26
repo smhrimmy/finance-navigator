@@ -44,7 +44,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await Debt.deleteMany({});
     }
 
-    let user = await User.findOne({ email: 'user@example.com' });
+    let user = await User.findOne({ email: 'user@example.com' } as any);
     if (!user) {
       user = await User.create({
         email: 'user@example.com',
@@ -59,7 +59,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const userId = user._id;
 
-    const existingAccounts = await Account.find({ userId });
+    const existingAccounts = await Account.find({ userId } as any);
     if (existingAccounts.length === 0) {
       await Account.insertMany(
         sampleAccounts.map(acc => ({ ...acc, userId }))
