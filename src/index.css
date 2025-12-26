@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Finance OS - Light Mode (rarely used, dark is primary) */
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 215 20% 95%;
+    --secondary-foreground: 222 47% 11%;
+    
+    --muted: 215 20% 93%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 160 84% 39%;
+    
+    --radius: 0.75rem;
+    
+    /* Finance-specific semantic tokens */
+    --finance-positive: 160 84% 39%;
+    --finance-negative: 0 72% 51%;
+    --finance-warning: 38 92% 50%;
+    --finance-info: 217 91% 60%;
+    --finance-purple: 262 83% 58%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(172 66% 50%) 100%);
+    --gradient-wealth: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(217 91% 60%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0 72% 51%) 0%, hsl(15 84% 57%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.05) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.02) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 40px hsl(160 84% 39% / 0.15);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.08);
+    
+    /* Chart colors */
+    --chart-1: 160 84% 39%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 262 83% 58%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 72% 51%;
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Finance OS - Premium Dark Theme */
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    
+    --card: 224 71% 6%;
+    --card-foreground: 213 31% 91%;
+    
+    --popover: 224 71% 6%;
+    --popover-foreground: 213 31% 91%;
+    
+    --primary: 160 84% 45%;
+    --primary-foreground: 224 71% 4%;
+    
+    --secondary: 215 28% 12%;
+    --secondary-foreground: 213 31% 91%;
+    
+    --muted: 215 28% 14%;
+    --muted-foreground: 215 20% 55%;
+    
+    --accent: 160 60% 20%;
+    --accent-foreground: 160 84% 70%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 215 28% 16%;
+    --input: 215 28% 16%;
+    --ring: 160 84% 45%;
+    
+    /* Finance-specific semantic tokens - Dark */
+    --finance-positive: 160 84% 50%;
+    --finance-negative: 0 84% 60%;
+    --finance-warning: 38 92% 55%;
+    --finance-info: 217 91% 65%;
+    --finance-purple: 262 83% 65%;
+    
+    /* Gradients - Dark */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 45%) 0%, hsl(172 66% 45%) 100%);
+    --gradient-wealth: linear-gradient(135deg, hsl(160 84% 45%) 0%, hsl(217 91% 60%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0 72% 55%) 0%, hsl(15 84% 57%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(215 28% 10%) 0%, hsl(224 71% 6%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.02) 100%);
+    
+    /* Shadows - Dark */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 60px hsl(160 84% 45% / 0.2);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+    
+    --sidebar-background: 224 71% 5%;
+    --sidebar-foreground: 213 31% 91%;
+    --sidebar-primary: 160 84% 45%;
+    --sidebar-primary-foreground: 224 71% 4%;
+    --sidebar-accent: 215 28% 12%;
+    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-border: 215 28% 16%;
+    --sidebar-ring: 160 84% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    background: var(--gradient-glass);
+  }
+  
+  /* Finance Cards */
+  .finance-card {
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/50 p-6;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .finance-card-hover {
+    @apply finance-card transition-all duration-300 ease-out;
+  }
+  
+  .finance-card-hover:hover {
+    @apply border-primary/30;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Stat Cards */
+  .stat-card {
+    @apply finance-card-hover;
+  }
+  
+  .stat-card-positive {
+    @apply stat-card border-l-4 border-l-[hsl(var(--finance-positive))];
+  }
+  
+  .stat-card-negative {
+    @apply stat-card border-l-4 border-l-[hsl(var(--finance-negative))];
+  }
+  
+  .stat-card-warning {
+    @apply stat-card border-l-4 border-l-[hsl(var(--finance-warning))];
+  }
+  
+  /* Budget Envelope */
+  .budget-envelope {
+    @apply relative overflow-hidden rounded-xl bg-secondary/50 p-4 border border-border/30;
+  }
+  
+  /* Progress Ring */
+  .progress-ring {
+    @apply relative;
+  }
+  
+  .progress-ring-track {
+    @apply stroke-muted;
+  }
+  
+  .progress-ring-fill {
+    @apply stroke-primary transition-all duration-700 ease-out;
+    stroke-linecap: round;
+  }
+  
+  /* Animated Counter */
+  .counter-value {
+    @apply font-mono font-semibold tabular-nums;
+  }
+  
+  /* Money Display */
+  .money-positive {
+    @apply text-[hsl(var(--finance-positive))];
+  }
+  
+  .money-negative {
+    @apply text-[hsl(var(--finance-negative))];
+  }
+  
+  /* Sidebar Navigation */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground transition-all duration-200;
+  }
+  
+  .nav-item:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  .nav-item-active {
+    @apply nav-item bg-primary/10 text-primary font-medium;
+  }
+  
+  /* Input Styles */
+  .finance-input {
+    @apply w-full rounded-lg bg-secondary/50 border border-border px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200;
+  }
+  
+  /* Button Variants */
+  .btn-finance {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn-finance bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply btn-finance bg-secondary text-secondary-foreground hover:bg-secondary/80 focus:ring-secondary;
+  }
+  
+  .btn-ghost {
+    @apply btn-finance bg-transparent text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:ring-accent;
+  }
+  
+  .btn-outline {
+    @apply btn-finance border border-border bg-transparent text-foreground hover:bg-accent focus:ring-accent;
+  }
+  
+  .btn-danger {
+    @apply btn-finance bg-destructive text-destructive-foreground hover:bg-destructive/90 focus:ring-destructive;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  /* Gradient Text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  
+  .text-gradient-wealth {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-wealth);
+  }
+  
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+  
+  /* Backdrop */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+/* Staggered Animation Delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
